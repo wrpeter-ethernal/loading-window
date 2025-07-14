@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "loading-window",
+	"version": "${version}",
+	"name": "Loading Window",
+	"description": "A dead-simple mod that adds an AWT loading window before Minecraft's main window opens.",
+	"authors": [
+		"LaterVICTOR"
+	],
+	"contact": {
+		"homepage": "https://ethernalstudio.cloud/",
+		"sources": "https://github.com/EthernalDev/loading-window"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/loading-window/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"dev.late.ethernal.loading.window.Initializer"
+		],
+		"preLaunch": [
+			"dev.late.ethernal.loading.window.PreLaunch"
+		]
+	},
+	"mixins": [
+		"loading-window.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
