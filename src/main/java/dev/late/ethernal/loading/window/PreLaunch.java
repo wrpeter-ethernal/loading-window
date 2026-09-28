@@ -53,7 +53,7 @@ public class PreLaunch implements PreLaunchEntrypoint {
 
    public static List<Image> getScaledGifIcon(File file) throws FileNotFoundException {
       GifDecoder gifDecoder = new GifDecoder();
-      int state = gifDecoder.read(new FileInputStream(file)); // ✅ Usamos correctamente el int devuelto
+      int state = gifDecoder.read(new FileInputStream(file));
       if (state != GifDecoder.STATUS_OK) {
          return null;
       }
@@ -125,7 +125,7 @@ public class PreLaunch implements PreLaunchEntrypoint {
       }
 
       public void setVisible(boolean b) {
-         if (!b) {
+         if (!b && this.pane != null) {
             this.pane.timer.stop();
             if (this.pane.frames != null) {
                this.pane.frames.clear();
@@ -177,16 +177,16 @@ public class PreLaunch implements PreLaunchEntrypoint {
 
       private void drawLoadingBar(Graphics g) {
          Graphics2D g2d = (Graphics2D) g;
-         int barHeight = 43; // nueva altura de la barra
+         int barHeight = 43;
          int y = this.getHeight() - barHeight;
 
          Paint paint = new GradientPaint(
                  0.0F,
                  this.getHeight(),
-                 new Color(100, 170, 220, 255), // azul claro más oscuro, opaco
+                 new Color(100, 170, 220, 255),
                  0.0F,
                  this.getHeight() - barHeight,
-                 new Color(100, 170, 220, 0),   // transparente en la parte superior de la barra
+                 new Color(100, 170, 220, 0),
                  false
          );
 
