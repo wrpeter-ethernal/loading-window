@@ -175,7 +175,7 @@ public class PreLaunch implements PreLaunchEntrypoint {
 
       private void drawLoadingBar(Graphics g) {
          Graphics2D g2d = (Graphics2D) g;
-         int barHeight = 8;
+         int barHeight = 12;
          int y = this.getHeight() - barHeight;
 
          g2d.setColor(new Color(0, 200, 83));
