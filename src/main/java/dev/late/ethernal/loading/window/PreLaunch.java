@@ -177,20 +177,10 @@ public class PreLaunch implements PreLaunchEntrypoint {
 
       private void drawLoadingBar(Graphics g) {
          Graphics2D g2d = (Graphics2D) g;
-         int barHeight = 43;
+         int barHeight = 8;
          int y = this.getHeight() - barHeight;
 
-         Paint paint = new GradientPaint(
-                 0.0F,
-                 this.getHeight(),
-                 new Color(100, 170, 220, 255),
-                 0.0F,
-                 this.getHeight() - barHeight,
-                 new Color(100, 170, 220, 0),
-                 false
-         );
-
-         g2d.setPaint(paint);
+         g2d.setColor(new Color(0, 200, 83));
          int x = (int) (this.getWidth() * this.loadingBarPosition);
          int width = this.getWidth() / 4;
          g2d.fillRect(x - width, y, width, barHeight);
