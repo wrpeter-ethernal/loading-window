@@ -151,8 +151,8 @@ public class PreLaunch implements PreLaunchEntrypoint {
          this.frames = frames;
          this.loadingBarPosition = 0.0F;
 
-         this.timer = new Timer(40, (e) -> {
-            this.loadingBarPosition += 0.01F;
+         this.timer = new Timer(16, (e) -> {
+            this.loadingBarPosition += 0.004F;
             this.tick();
             if (this.loadingBarPosition > 1.28F) {
                this.loadingBarPosition = 0.0F;
