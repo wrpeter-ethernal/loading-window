@@ -143,6 +143,7 @@ public class PreLaunch implements PreLaunchEntrypoint {
       private final Timer timer;
       private final Image icon;
       private float loadingBarPosition;
+      private final long startTime = System.nanoTime();
 
       public LoadingBarPane(@Nullable List<Image> frames, Image icon, int width, int height) {
          this.setPreferredSize(new Dimension(width, height));
@@ -152,11 +153,8 @@ public class PreLaunch implements PreLaunchEntrypoint {
          this.loadingBarPosition = 0.0F;
 
          this.timer = new Timer(16, (e) -> {
-            this.loadingBarPosition += 0.004F;
+            this.loadingBarPosition = ((System.nanoTime() - this.startTime) / 1_000_000_000.0F * 0.25F) % 1.28F;
             this.tick();
-            if (this.loadingBarPosition > 1.28F) {
-               this.loadingBarPosition = 0.0F;
-            }
             this.repaint();
          });
          this.timer.start();
