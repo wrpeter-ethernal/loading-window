@@ -1,6 +1,7 @@
 package dev.late.ethernal.loading.window;
 
 import java.awt.*;
+import java.awt.event.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -122,6 +123,25 @@ public class PreLaunch implements PreLaunchEntrypoint {
             this.setResizable(false);
             this.setUndecorated(true);
          }
+
+         this.enableDrag(this.getContentPane());
+      }
+
+      private void enableDrag(Container content) {
+         Point dragStart = new Point();
+         Point windowStart = new Point();
+         content.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+               dragStart.setLocation(e.getLocationOnScreen());
+               windowStart.setLocation(LoadingFrame.this.getLocation());
+            }
+         });
+         content.addMouseMotionListener(new MouseAdapter() {
+            public void mouseDragged(MouseEvent e) {
+               Point p = e.getLocationOnScreen();
+               LoadingFrame.this.setLocation(windowStart.x + p.x - dragStart.x, windowStart.y + p.y - dragStart.y);
+            }
+         });
       }
 
       public void setVisible(boolean b) {
